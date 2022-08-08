@@ -1,0 +1,31 @@
+plugins {
+    id 'kotlin'
+    id 'idea'
+    id 'com.google.devtools.ksp'
+    id 'com.github.ben-manes.versions'
+    id 'com.adarshr.test-logger'
+}
+
+sourceSets.main {
+    // KSP - To use generated sources
+    java.srcDirs += 'build/generated/ksp/main/kotlin'
+}
+
+dependencies {
+    // KOTLIN
+    implementation kotlinStdlib
+    implementation kotlinxCoroutinesCore
+    // KOIN
+    implementation koinCore
+    implementation koinAnnotations
+    ksp koinCompiler
+
+    // TEST
+    testImplementation junit
+    testImplementation mockitoInline
+    testImplementation mockitoKotlin
+    testImplementation kotlinxCoroutinesTest
+
+    // DEPENDENCY CHECK STRATEGY
+    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+}

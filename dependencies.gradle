@@ -1,0 +1,117 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+ext {
+    // APP VERSION
+    androidVersionCode          = 1
+    androidVersionName          = '1.0.0'
+
+    // ANDROID VERSION
+    androidCompileSdkVersion    = 32
+    androidMinSdkVersion        = 21
+    androidTargetSdkVersion     = androidCompileSdkVersion
+
+    // DEFAULT INFO
+    packageAndroidJUnitRunner   = "androidx.test.runner.AndroidJUnitRunner"
+
+    // KOTLIN
+    kotlinCoroutinesVersion     = '1.6.4'
+    kotlinStdlib                = "org.jetbrains.kotlin:kotlin-stdlib:${ext.kotlin_version}"
+    kotlinxCoroutinesCore       = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
+
+    // ANDROID LIB
+    androidXCore                = "androidx.core:core:1.8.0"
+    androidXAppCompat           = "androidx.appcompat:appcompat:1.4.2"
+    androidXPreference          = "androidx.preference:preference-ktx:1.2.0"
+    multidex                    = "androidx.multidex:multidex:2.0.1"
+
+    // COMPOSE
+    composeVersion              = '1.2.0'
+    composeCompilerVersion      = '1.2.0'
+    composeCompiler             = "androidx.compose.compiler:compiler:$composeCompilerVersion"
+    composeUI                   = "androidx.compose.ui:ui:$composeVersion"
+    composeUiTooling            = "androidx.compose.ui:ui-tooling:$composeVersion"
+    composeUiToolingPreview     = "androidx.compose.ui:ui-tooling-preview:$composeVersion"
+    composeFoundation           = "androidx.compose.foundation:foundation:$composeVersion"
+    composeMaterial             = "androidx.compose.material:material:$composeVersion"
+    composeMaterialIconsExt     = "androidx.compose.material:material-icons-extended:$composeVersion"
+    activityCompose             = "androidx.activity:activity-compose:1.5.1"
+    accompanistSwiperefresh     = "com.google.accompanist:accompanist-swiperefresh:0.25.0"
+    customviewPoolingContainer  = "androidx.customview:customview-poolingcontainer:1.0.0"
+    coilCompose                 = "io.coil-kt:coil-compose:2.1.0"
+
+    // NAVIGATION
+    navigationVersion           = '2.5.1'
+    navigationFragment          = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    navigationUi                = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    navigationCompose           = "androidx.navigation:navigation-compose:$navigationVersion"
+
+    // COMPONENTS
+    roomVersion                 = '2.4.3'
+    room                        = "androidx.room:room-ktx:$roomVersion"
+    roomCompiler                = "androidx.room:room-compiler:$roomVersion"
+
+    // KOIN
+    koinVersion                 = '3.2.0'
+    koinAnnotationsVersion      = '1.0.1'
+    koinCore                    = "io.insert-koin:koin-core:$koinVersion"
+    koinAndroid                 = "io.insert-koin:koin-android:$koinVersion"
+    koinAnnotations             = "io.insert-koin:koin-annotations:$koinAnnotationsVersion"
+    koinCompiler                = "io.insert-koin:koin-ksp-compiler:$koinAnnotationsVersion"
+    koinCompose                 = "io.insert-koin:koin-androidx-compose:$koinVersion"
+
+    // WEBSERVICES
+    ktorVersion                 = '2.0.3'
+    ktorClientCore              = "io.ktor:ktor-client-core:$ktorVersion"
+    ktorClientOkHttp            = "io.ktor:ktor-client-okhttp:$ktorVersion"
+    ktorSerializationJson       = "io.ktor:ktor-serialization-kotlinx-json:$ktorVersion"
+    ktorContentNegotiation      = "io.ktor:ktor-client-content-negotiation:$ktorVersion"
+
+    // DEBUG
+    chuckerVersion              = '3.5.2'
+    timber                      = "com.jakewharton.timber:timber:5.0.1"
+    chuckerDebug                = "com.github.chuckerteam.chucker:library:$chuckerVersion"
+    chuckerRelease              = "com.github.chuckerteam.chucker:library-no-op:$chuckerVersion"
+    ktorClientLogging           = "io.ktor:ktor-client-logging-jvm:$ktorVersion"
+
+    // TEST
+    junit                       = "junit:junit:4.13.2"
+    mockitoInline               = "org.mockito:mockito-inline:4.6.1"
+    mockitoKotlin               = "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    kotlinxCoroutinesTest       = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion"
+
+    // ANDROID TEST
+    androidXTestRunner          = "androidx.test:runner:1.4.0"
+    androidXTestJunit           = "androidx.test.ext:junit-ktx:1.1.3"
+    composeUiTestJunit          = "androidx.compose.ui:ui-test-junit4:$composeVersion"
+    composeUiTestManifest       = "androidx.compose.ui:ui-test-manifest:$composeVersion"
+
+    // PROGUARD
+    proguardFolder              = '../proguard/'
+    kotlinRules                 = proguardFolder + 'kotlin-rules.pro'
+    modelRules                  = proguardFolder + 'model-rules.pro'
+    okhttp3Rules                = proguardFolder + 'okhttp3-rules.pro'
+    ktorLoggingRules            = proguardFolder + 'ktor-logging-rules.pro'
+
+    // DEPENDENCY CHECK STRATEGY
+    dependencyUpdatesStrategy = {
+        def isNonStable = { String version ->
+            def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { keyword ->
+                version.toUpperCase().contains(keyword)
+            }
+            def regex = /^[0-9,.v-]+(-r)?$/
+            return !stableKeyword && !(version ==~ regex)
+        }
+        componentSelection {
+            all {
+                if (isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)) {
+                    reject('Release candidate')
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlinx-serialization'
+    id 'com.google.devtools.ksp'
+    id 'com.github.ben-manes.versions'
+    id 'com.adarshr.test-logger'
+}
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    namespace 'com.mikhaellopez.data'
+    defaultConfig {
+        minSdk androidMinSdkVersion
+        targetSdk androidTargetSdkVersion
+        testInstrumentationRunner packageAndroidJUnitRunner
+        consumerProguardFiles kotlinRules, modelRules, okhttp3Rules, ktorLoggingRules
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+    libraryVariants.all { variant ->
+        // KSP - To use generated sources
+        variant.addJavaSourceFoldersToModel(file("build/generated/ksp/${variant.name}/kotlin"))
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // MODULE
+    implementation project(':domain')
+
+    // KOTLIN
+    implementation kotlinStdlib
+    // SUPPORT
+    api androidXCore
+    // COMPONENTS
+    implementation room
+    ksp roomCompiler
+    // KOIN
+    implementation koinCore
+    implementation koinAndroid
+    implementation koinAnnotations
+    ksp(koinCompiler)
+    // WEBSERVICES
+    implementation ktorClientCore
+    implementation ktorClientOkHttp
+    implementation ktorSerializationJson
+    implementation ktorContentNegotiation
+
+    // DEBUG TOOLS
+    implementation timber
+    implementation ktorClientLogging
+    debugApi chuckerDebug
+    releaseApi chuckerRelease
+
+    // TEST
+    testImplementation junit
+    testImplementation mockitoInline
+    testImplementation mockitoKotlin
+    testImplementation kotlinxCoroutinesTest
+
+    // ANDROID TEST
+    androidTestImplementation androidXTestRunner
+    androidTestImplementation androidXTestJunit
+    androidTestImplementation kotlinxCoroutinesTest
+
+    // DEPENDENCY CHECK STRATEGY
+    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+}

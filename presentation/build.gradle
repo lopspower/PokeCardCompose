@@ -1,0 +1,99 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.github.ben-manes.versions'
+    id 'com.adarshr.test-logger'
+}
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    namespace 'com.mikhaellopez.presentation'
+    defaultConfig {
+        applicationId "com.mikhaellopez.pokecardcompose"
+        minSdk androidMinSdkVersion
+        targetSdk androidTargetSdkVersion
+        versionCode androidVersionCode
+        versionName androidVersionName
+        multiDexEnabled true
+        testInstrumentationRunner packageAndroidJUnitRunner
+    }
+    signingConfigs {
+        release {
+            storeFile file('keystore')
+            keyAlias 'alias'
+            keyPassword 'password'
+            storePassword 'password'
+            enableV3Signing true
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+        }
+        release {
+            signingConfig signingConfigs.release
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+    applicationVariants.all { variant ->
+        // KSP - To use generated sources
+        variant.addJavaSourceFoldersToModel(file("build/generated/ksp/${variant.name}/kotlin"))
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion composeCompilerVersion
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    // MODULE
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':design:ui')
+
+    // KOTLIN
+    implementation kotlinStdlib
+    // ANDROIDX
+    implementation androidXAppCompat
+    implementation androidXPreference
+    implementation multidex
+    // KOIN
+    implementation koinCore
+    implementation koinAndroid
+    implementation koinAnnotations
+    implementation koinCompose
+    ksp koinCompiler
+    // NAVIGATION
+    implementation navigationCompose
+
+    // DEBUG TOOLS
+    implementation timber
+
+    // TEST
+    testImplementation junit
+    testImplementation mockitoInline
+    testImplementation mockitoKotlin
+    implementation kotlinxCoroutinesTest
+
+    // ANDROID TEST
+    androidTestImplementation androidXTestJunit
+    androidTestImplementation composeUiTestJunit
+    debugImplementation composeUiTestManifest
+
+    // DEPENDENCY CHECK STRATEGY
+    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+}

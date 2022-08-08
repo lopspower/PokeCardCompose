@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="card_grid">Grid</string>
+    <string name="card_list">List</string>
+    <!-- ERROR -->
+    <string name="error_generic">An error has occurred</string>
+    <string name="error_persistence">Persistence data error</string>
+    <string name="error_no_connection">No connection</string>
+</resources>

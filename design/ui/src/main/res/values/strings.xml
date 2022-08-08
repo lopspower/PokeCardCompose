@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PokeCard Compose</string>
+    <string name="error_view_oops">Oops</string>
+    <string name="error_view_retry">RETRY</string>
+</resources>
