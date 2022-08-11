@@ -5,7 +5,7 @@ PokeCardCompose
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![Twitter](https://img.shields.io/badge/Twitter-@LopezMikhael-blue.svg?style=flat)](http://twitter.com/lopezmikhael)
 
-A demo **Pokemon Card** app using **Jetpack Compose** and **Koin** based on **MVI architecture**. Fetching data from the network with **Ktor** and integrating persisted data in **Room** database with usecase/repository pattern.
+A **Pokemon Card** demo app using **Jetpack Compose** and **Koin** based on **MVI architecture**. Fetching data from the network with **Ktor** and integrating persisted data in **Room** database with usecase/repository pattern.
 
 Preview
 -----
@@ -34,7 +34,7 @@ Libraries & Tech Stack
     * Database: [Room](https://developer.android.com/training/data-storage/room)
 * Webservices: [Ktor](https://ktor.io/)
 * Load Images: [Coil](https://coil-kt.github.io/coil/compose/)
-* Debug: [Timber](https://github.com/JakeWharton/timber) / [Chucker](https://github.com/ChuckerTeam/chucker)
+* Debug: [Chucker](https://github.com/ChuckerTeam/chucker)
 * Testing: [JUnit](https://developer.android.com/training/testing/instrumented-tests/androidx-test-libraries/rules)
 / [Mockito](https://github.com/mockito/mockito-kotlin)
 
