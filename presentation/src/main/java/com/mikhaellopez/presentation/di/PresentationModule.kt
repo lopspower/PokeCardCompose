@@ -1,6 +1,6 @@
 package com.mikhaellopez.presentation.di
 
-import com.mikhaellopez.data.helper.TimberWrapper
+import android.util.Log
 import com.mikhaellopez.domain.usecases.base.Logger
 import com.mikhaellopez.presentation.exception.ErrorMessageFactory
 import com.mikhaellopez.presentation.scenes.carddetail.CardDetailViewModel
@@ -12,12 +12,12 @@ import org.koin.dsl.module
 val helperModule = module {
     single<Logger> {
         object : Logger {
-            override fun log(message: () -> String) {
-                TimberWrapper.d(message)
+            override fun log(tag: String, message: () -> String) {
+                Log.d(tag, message())
             }
 
-            override fun logError(throwable: () -> String) {
-                TimberWrapper.d(throwable)
+            override fun logError(tag: String, throwable: () -> String) {
+                Log.e(tag, throwable())
             }
         }
     }

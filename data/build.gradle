@@ -14,7 +14,7 @@ android {
         minSdk androidMinSdkVersion
         targetSdk androidTargetSdkVersion
         testInstrumentationRunner packageAndroidJUnitRunner
-        consumerProguardFiles kotlinRules, modelRules, okhttp3Rules, ktorLoggingRules
+        consumerProguardFiles kotlinRules, modelRules, logRules, okhttp3Rules, ktorLoggingRules
     }
     buildTypes {
         release {
@@ -57,7 +57,6 @@ dependencies {
     implementation ktorContentNegotiation
 
     // DEBUG TOOLS
-    implementation timber
     implementation ktorClientLogging
     debugApi chuckerDebug
     releaseApi chuckerRelease

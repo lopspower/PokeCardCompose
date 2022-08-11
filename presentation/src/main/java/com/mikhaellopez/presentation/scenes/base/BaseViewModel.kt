@@ -1,8 +1,8 @@
 package com.mikhaellopez.presentation.scenes.base
 
+import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
-import com.mikhaellopez.data.helper.TimberWrapper
 import com.mikhaellopez.domain.extensions.catchDelay
 import com.mikhaellopez.domain.extensions.catchEmit
 import com.mikhaellopez.domain.extensions.onStartEmit
@@ -44,7 +44,7 @@ abstract class BaseViewModel<in View : BaseUiStateView>(
         flows.forEach { flow ->
             flow.flowOn(context)
                 .onEach { viewModel ->
-                    TimberWrapper.d { "Render => $viewModel" }
+                    Log.d("Render", viewModel.toString())
                     view.uiStateFlow.value = viewModel
                 }
                 .launchIn(scope)

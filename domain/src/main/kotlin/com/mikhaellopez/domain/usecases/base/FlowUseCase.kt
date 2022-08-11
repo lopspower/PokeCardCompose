@@ -15,7 +15,7 @@ constructor(
 
     override suspend fun execute(param: P, fromUseCase: Boolean): Flow<R> =
         super.execute(param, fromUseCase)
-            .catchLog { logger?.logError { "UseCase Error => $it" } }
-            .onEach { logger?.log { "UseCase [${javaClass.simpleName}] Result => $it" } }
+            .catchLog { logger?.logError("UseCase [${javaClass.simpleName}]") { "Error => $it" } }
+            .onEach { logger?.log(tag = "UseCase [${javaClass.simpleName}]") { "Result => $it" } }
 
 }

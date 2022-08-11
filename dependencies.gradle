@@ -73,7 +73,6 @@ ext {
 
     // DEBUG
     chuckerVersion              = '3.5.2'
-    timber                      = "com.jakewharton.timber:timber:5.0.1"
     chuckerDebug                = "com.github.chuckerteam.chucker:library:$chuckerVersion"
     chuckerRelease              = "com.github.chuckerteam.chucker:library-no-op:$chuckerVersion"
     ktorClientLogging           = "io.ktor:ktor-client-logging-jvm:$ktorVersion"
@@ -94,6 +93,7 @@ ext {
     proguardFolder              = '../proguard/'
     kotlinRules                 = proguardFolder + 'kotlin-rules.pro'
     modelRules                  = proguardFolder + 'model-rules.pro'
+    logRules                    = proguardFolder + 'log-rules.pro'
     okhttp3Rules                = proguardFolder + 'okhttp3-rules.pro'
     ktorLoggingRules            = proguardFolder + 'ktor-logging-rules.pro'
 

@@ -80,9 +80,6 @@ dependencies {
     // NAVIGATION
     implementation navigationCompose
 
-    // DEBUG TOOLS
-    implementation timber
-
     // TEST
     testImplementation junit
     testImplementation mockitoInline

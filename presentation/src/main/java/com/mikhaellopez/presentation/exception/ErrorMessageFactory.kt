@@ -1,10 +1,10 @@
 package com.mikhaellopez.presentation.exception
 
 import android.content.Context
+import android.util.Log
 import com.mikhaellopez.domain.exception.NoConnectedException
 import com.mikhaellopez.domain.exception.PersistenceException
 import com.mikhaellopez.presentation.R
-import timber.log.Timber
 
 /**
  * Copyright (C) 2022 Mikhael LOPEZ
@@ -24,7 +24,7 @@ open class ErrorMessageFactory(private val context: Context) {
                 is NoConnectedException -> context.getString(R.string.error_no_connection)
                 is PersistenceException -> context.getString(R.string.error_persistence)
                 else -> context.getString(R.string.error_generic)
-            }.apply { Timber.e(it) }
+            }.apply { Log.e("ErrorMessageFactory", "getError => ${it.message}") }
         } ?: getGenericError()
 
     private fun getGenericError() = context.getString(R.string.error_generic)

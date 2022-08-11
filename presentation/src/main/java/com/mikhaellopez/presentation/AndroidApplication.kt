@@ -6,7 +6,6 @@ import com.mikhaellopez.domain.di.koinDomainModules
 import com.mikhaellopez.presentation.di.koinPresentationModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import timber.log.Timber
 
 /**
  * Copyright (C) 2022 Mikhael LOPEZ
@@ -23,13 +22,7 @@ class AndroidApplication : Application() {
             modules(koinDomainModules)
             modules(koinPresentationModules)
         }
-
         super.onCreate()
-
-        // Init Debug log
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
     }
 
 }
