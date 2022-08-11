@@ -26,7 +26,7 @@ abstract class UseCase<in P, R>(private val logger: Logger?) {
     suspend fun execute(param: P): R = execute(param, false)
 
     protected open suspend fun execute(param: P, fromUseCase: Boolean): R {
-        logger?.log { "UseCase [${javaClass.simpleName}] Param => $param" }
+        logger?.log(tag = "UseCase [${javaClass.simpleName}]") { "Param => $param" }
         return build(param)
     }
 

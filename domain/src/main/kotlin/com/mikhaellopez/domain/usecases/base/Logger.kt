@@ -5,6 +5,6 @@ package com.mikhaellopez.domain.usecases.base
  * Licensed under the Apache License Version 2.0
  */
 interface Logger {
-    fun log(message: () -> String)
-    fun logError(throwable: () -> String)
+    fun log(tag: String, message: () -> String)
+    fun logError(tag: String, throwable: () -> String)
 }

@@ -1,9 +1,9 @@
 package com.mikhaellopez.data.net
 
 import android.content.Context
+import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.mikhaellopez.data.BuildConfig
-import com.mikhaellopez.data.helper.TimberWrapper
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
 import io.ktor.client.plugins.*
@@ -48,7 +48,7 @@ open class HttpClientFactory {
                 logger = object : Logger {
                     override fun log(message: String) {
                         if (message.isNotEmpty()) {
-                            TimberWrapper.v { "Ktor => $message" }
+                            Log.v("Ktor", message)
                         }
                     }
                 }
