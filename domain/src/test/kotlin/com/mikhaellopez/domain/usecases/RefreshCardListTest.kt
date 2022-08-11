@@ -6,6 +6,7 @@ import com.mikhaellopez.domain.repository.CardRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -37,8 +38,8 @@ class RefreshCardListTest {
         val count = flow.count()
         val first = flow.first()
 
-        assert(count == 1)
-        assert(first == cardList)
+        assertEquals(count, 1)
+        assertEquals(first, cardList)
     }
 
     @Test
