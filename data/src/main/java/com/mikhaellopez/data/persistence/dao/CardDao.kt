@@ -34,5 +34,4 @@ abstract class CardDao : BaseDao<CardEntity> {
      */
     @Query("UPDATE $CARD_TABLE SET $CARD_IS_CHECK = :isCheck WHERE $CARD_NAME = :name")
     abstract suspend fun updateIsCheck(name: String, isCheck: Boolean): Int
-
 }

@@ -24,5 +24,4 @@ class AndroidApplication : Application() {
         }
         super.onCreate()
     }
-
 }

@@ -10,5 +10,4 @@ object DatabaseFactoryTest {
             // allowing main thread queries, just for testing
             .allowMainThreadQueries()
             .build()
-
 }

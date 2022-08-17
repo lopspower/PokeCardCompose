@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jlleitschuh.gradle.ktlint'
     id 'com.github.ben-manes.versions'
 }
 
@@ -32,6 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+ktlint {
+    verbose = true
+    android = true
 }
 
 dependencies {

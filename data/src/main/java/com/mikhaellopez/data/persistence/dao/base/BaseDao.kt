@@ -22,5 +22,4 @@ interface BaseDao<T> {
      */
     @Delete
     fun delete(entity: T): Int
-
 }

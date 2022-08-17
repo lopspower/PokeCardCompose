@@ -29,5 +29,4 @@ abstract class UseCase<in P, R>(private val logger: Logger?) {
         logger?.log(tag = "UseCase [${javaClass.simpleName}]") { "Param => $param" }
         return build(param)
     }
-
 }

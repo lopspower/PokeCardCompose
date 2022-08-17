@@ -60,5 +60,4 @@ class CardListViewModel(
             .flatMapConcat { getListCard.execute(Unit) }
             .asResult(withLoading = false)
     //endregion
-
 }

@@ -49,5 +49,4 @@ class GetCacheCardTest {
             assert(cause is PersistenceException)
         }.collect()
     }
-
 }

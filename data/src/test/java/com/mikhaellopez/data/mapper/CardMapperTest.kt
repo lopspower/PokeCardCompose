@@ -211,5 +211,4 @@ class CardMapperTest {
         assertEquals(model.isCheck, isCheck)
     }
     //endregion
-
 }

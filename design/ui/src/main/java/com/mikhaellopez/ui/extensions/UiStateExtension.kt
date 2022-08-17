@@ -14,8 +14,8 @@ inline fun <reified T> UiState.toContent(content: (T) -> Unit) {
 inline fun <reified T> UiState.toContent(
     klass: Class<T> = T::class.java
 ): T? =
-    if (this is UiState.Content<*>
-        && data?.let { data -> klass.isAssignableFrom(data.javaClass) } == true
+    if (this is UiState.Content<*> &&
+        data?.let { data -> klass.isAssignableFrom(data.javaClass) } == true
     ) data as T else null
 
 fun MutableStateFlow<UiState>.clearSnackMessage() {
@@ -25,4 +25,3 @@ fun MutableStateFlow<UiState>.clearSnackMessage() {
         }
     }
 }
-

@@ -39,5 +39,4 @@ class GetListCard(
                 else cache
             }
     }
-
 }

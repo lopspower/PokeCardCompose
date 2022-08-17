@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlinx-serialization'
     id 'com.google.devtools.ksp'
+    id 'org.jlleitschuh.gradle.ktlint'
     id 'com.github.ben-manes.versions'
     id 'com.adarshr.test-logger'
 }
@@ -32,6 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+ktlint {
+    verbose = true
+    android = true
 }
 
 dependencies {

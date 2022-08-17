@@ -159,5 +159,4 @@ class CardProcessorTest {
             assert(cause is PersistenceException)
         }.collect()
     }
-
 }

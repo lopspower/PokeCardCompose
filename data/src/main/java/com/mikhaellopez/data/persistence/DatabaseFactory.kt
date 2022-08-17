@@ -12,5 +12,4 @@ object DatabaseFactory {
             AppDatabase::class.java,
             context.getString(R.string.DATABASE_NAME)
         ).build()
-
 }

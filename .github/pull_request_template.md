@@ -7,3 +7,16 @@ What types of changes does your code introduce?
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+
+### Preparing a pull request for review
+Ensure your change is properly formatted by running:
+
+```gradle
+$ ./gradlew ktlintCheck
+```
+
+Please correct any failures before requesting a review by running:
+
+```gradle
+$ ./gradlew ktlintFormat
+```

@@ -26,5 +26,4 @@ enum class TypeEnum {
                 else -> throw RuntimeException("Unknown this type: $value")
             }
     }
-
 }

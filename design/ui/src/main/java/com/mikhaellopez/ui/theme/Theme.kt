@@ -68,55 +68,55 @@ private val Typography = Typography(
     defaultFontFamily = Montserrat,
     h1 = TextStyle(
         fontWeight = FontWeight.Light,
-        fontSize = 62.sp //96.sp
+        fontSize = 62.sp // 96.sp
     ),
     h2 = TextStyle(
         fontWeight = FontWeight.Light,
-        fontSize = 50.sp //60.sp
+        fontSize = 50.sp // 60.sp
     ),
     h3 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 38.sp //48.sp
+        fontSize = 38.sp // 48.sp
     ),
     h4 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 30.sp //34.sp
+        fontSize = 30.sp // 34.sp
     ),
     h5 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 22.sp //24.sp
+        fontSize = 22.sp // 24.sp
     ),
     h6 = TextStyle(
-        fontWeight = FontWeight.SemiBold, //FontWeight.Medium,
-        fontSize = 18.sp //20.sp
+        fontWeight = FontWeight.SemiBold, // FontWeight.Medium,
+        fontSize = 18.sp // 20.sp
     ),
     subtitle1 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     ),
     subtitle2 = TextStyle(
-        fontWeight = FontWeight.SemiBold, //FontWeight.Medium,
+        fontWeight = FontWeight.SemiBold, // FontWeight.Medium,
         fontSize = 14.sp
     ),
     body1 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp //16.sp
+        fontSize = 14.sp // 16.sp
     ),
     body2 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp //14.sp
+        fontSize = 12.sp // 14.sp
     ),
     button = TextStyle(
-        fontWeight = FontWeight.SemiBold, //FontWeight.Medium,
-        fontSize = 12.sp //14.sp
+        fontWeight = FontWeight.SemiBold, // FontWeight.Medium,
+        fontSize = 12.sp // 14.sp
     ),
     caption = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 10.sp //12.sp
+        fontSize = 10.sp // 12.sp
     ),
     overline = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 8.sp //10.sp
+        fontSize = 8.sp // 10.sp
     )
 )
 

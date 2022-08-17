@@ -35,9 +35,11 @@ fun CardListItem(
         backgroundColor = MaterialTheme.colors.surface
     ) {
         Box(modifier = Modifier.clickable { onClick?.invoke(card) }) {
-            Row(modifier = Modifier
-                .padding(all = 8.dp)
-                .height(90.dp)) {
+            Row(
+                modifier = Modifier
+                    .padding(all = 8.dp)
+                    .height(90.dp)
+            ) {
                 Image(
                     painter = rememberAsyncImagePainter(card.picture),
                     modifier = Modifier
@@ -95,7 +97,6 @@ fun CardListItem(
                         onCheck = { onCheck?.invoke(card) }
                     )
                 }
-
             }
         }
     }

@@ -209,5 +209,4 @@ class CardListViewModelTest : BaseViewModelTest() {
         viewModel.onCleared()
         job.cancel()
     }
-
 }

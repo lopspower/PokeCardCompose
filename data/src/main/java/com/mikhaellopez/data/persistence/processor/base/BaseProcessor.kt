@@ -14,5 +14,4 @@ abstract class BaseProcessor<T>(private val baseDao: BaseDao<T>) {
     fun delete(entity: T): Flow<Unit> =
         flow { emit(baseDao.delete(entity) > 0) }
             .checkPersistenceResult()
-
 }

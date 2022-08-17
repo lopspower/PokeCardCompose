@@ -137,11 +137,13 @@ open class CardDaoTest {
         assert(database.cardDao().insert(entity1) > 0)
         assert(database.cardDao().insert(entity2) > 0)
 
-        assert(database.cardDao().getAll().let {
-            it.size == 2
-                    && it[0].compareTo(entity1)
-                    && it[1].compareTo(entity2)
-        })
+        assert(
+            database.cardDao().getAll().let {
+                it.size == 2 &&
+                    it[0].compareTo(entity1) &&
+                    it[1].compareTo(entity2)
+            }
+        )
     }
 
     @Test
@@ -172,17 +174,16 @@ open class CardDaoTest {
 
     private fun CardEntity?.compareTo(entity: CardEntity): Boolean =
         this?.run {
-            name == entity.name
-                    && frenchName == entity.frenchName
-                    && japaneseName == entity.japaneseName
-                    && type == entity.type
-                    && rarity == entity.rarity
-                    && pokemonNumber == entity.pokemonNumber
-                    && picture == entity.picture
-                    && illustrator == entity.illustrator
-                    && wikiLink == entity.wikiLink
-                    && number == entity.number
-                    && isCheck == entity.isCheck
+            name == entity.name &&
+                frenchName == entity.frenchName &&
+                japaneseName == entity.japaneseName &&
+                type == entity.type &&
+                rarity == entity.rarity &&
+                pokemonNumber == entity.pokemonNumber &&
+                picture == entity.picture &&
+                illustrator == entity.illustrator &&
+                wikiLink == entity.wikiLink &&
+                number == entity.number &&
+                isCheck == entity.isCheck
         } ?: false
-
 }

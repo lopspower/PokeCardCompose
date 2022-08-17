@@ -8,5 +8,4 @@ interface CardDetailView : BaseUiStateView {
     fun intentLoadData(): Flow<String>
 
     fun intentErrorRetry(): Flow<String>
-
 }
