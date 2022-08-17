@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.devtools.ksp'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'org.jlleitschuh.gradle.ktlint'
     id 'com.github.ben-manes.versions'
     id 'com.adarshr.test-logger'
 }
@@ -57,6 +58,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+ktlint {
+    verbose = true
+    android = true
 }
 
 dependencies {

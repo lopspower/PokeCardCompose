@@ -2,6 +2,7 @@ plugins {
     id 'kotlin'
     id 'idea'
     id 'com.google.devtools.ksp'
+    id 'org.jlleitschuh.gradle.ktlint'
     id 'com.github.ben-manes.versions'
     id 'com.adarshr.test-logger'
 }
@@ -9,6 +10,11 @@ plugins {
 sourceSets.main {
     // KSP - To use generated sources
     java.srcDirs += 'build/generated/ksp/main/kotlin'
+}
+
+ktlint {
+    verbose = true
+    android = true
 }
 
 dependencies {
