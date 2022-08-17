@@ -42,7 +42,7 @@ ext {
     activityCompose             = "androidx.activity:activity-compose:1.5.1"
     accompanistSwiperefresh     = "com.google.accompanist:accompanist-swiperefresh:0.25.1"
     customviewPoolingContainer  = "androidx.customview:customview-poolingcontainer:1.0.0"
-    coilCompose                 = "io.coil-kt:coil-compose:2.1.0"
+    coilCompose                 = "io.coil-kt:coil-compose:2.2.0"
 
     // NAVIGATION
     navigationVersion           = '2.5.1'
@@ -65,7 +65,7 @@ ext {
     koinCompose                 = "io.insert-koin:koin-androidx-compose:$koinVersion"
 
     // WEBSERVICES
-    ktorVersion                 = '2.0.3'
+    ktorVersion                 = '2.1.0'
     ktorClientCore              = "io.ktor:ktor-client-core:$ktorVersion"
     ktorClientOkHttp            = "io.ktor:ktor-client-okhttp:$ktorVersion"
     ktorSerializationJson       = "io.ktor:ktor-serialization-kotlinx-json:$ktorVersion"
@@ -79,7 +79,7 @@ ext {
 
     // TEST
     junit                       = "junit:junit:4.13.2"
-    mockitoInline               = "org.mockito:mockito-inline:4.6.1"
+    mockitoInline               = "org.mockito:mockito-inline:4.7.0"
     mockitoKotlin               = "org.mockito.kotlin:mockito-kotlin:4.0.0"
     kotlinxCoroutinesTest       = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion"
 
