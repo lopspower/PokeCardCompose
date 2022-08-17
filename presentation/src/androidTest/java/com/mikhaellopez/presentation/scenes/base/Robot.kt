@@ -10,5 +10,4 @@ abstract class Robot(private val uiStateFlow: MutableStateFlow<UiState>) {
             this.uiStateFlow.value = uiState
             currentClass.func()
         }
-
 }

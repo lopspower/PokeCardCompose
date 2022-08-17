@@ -11,5 +11,4 @@ import kotlinx.coroutines.flow.MutableStateFlow
 interface BaseUiStateView {
 
     val uiStateFlow: MutableStateFlow<UiState>
-
 }

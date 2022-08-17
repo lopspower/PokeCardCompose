@@ -37,5 +37,4 @@ class CardEntity(
         const val CARD_NUMBER = "number"
         const val CARD_IS_CHECK = "is_check"
     }
-
 }

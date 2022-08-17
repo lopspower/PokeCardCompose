@@ -10,5 +10,4 @@ object PublishSharedFlow {
             extraBufferCapacity = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
-
 }

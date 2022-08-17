@@ -36,5 +36,4 @@ object ConstantPreviewCard {
     )
 
     val CARD = CARD_LIST[0]
-
 }

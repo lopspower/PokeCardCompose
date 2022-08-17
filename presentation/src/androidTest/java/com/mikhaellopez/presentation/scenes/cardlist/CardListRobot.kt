@@ -84,5 +84,4 @@ class CardListRobot(
         composeTestRule.onNodeWithText(item.illustrator).assertIsDisplayed()
     }
     //endregion
-
 }

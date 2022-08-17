@@ -17,5 +17,4 @@ constructor(
         super.execute(param, fromUseCase)
             .catchLog { logger?.logError("UseCase [${javaClass.simpleName}]") { "Error => $it" } }
             .onEach { logger?.log(tag = "UseCase [${javaClass.simpleName}]") { "Result => $it" } }
-
 }

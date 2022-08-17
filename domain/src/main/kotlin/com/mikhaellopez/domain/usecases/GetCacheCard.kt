@@ -22,5 +22,4 @@ class GetCacheCard(
     override suspend fun build(param: String): Flow<Card> =
         cardRepository.getCacheCard(param)
             .throwIfEmpty(PersistenceException)
-
 }

@@ -15,5 +15,4 @@ class PokeApi(private val client: HttpClient) {
 
     suspend fun getCardList(): List<CardDTO> =
         client.get("$BASE_URL/poke.json").body()
-
 }

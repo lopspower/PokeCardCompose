@@ -141,5 +141,4 @@ class CardDetailViewModelTest : BaseViewModelTest() {
         viewModel.onCleared()
         job.cancel()
     }
-
 }

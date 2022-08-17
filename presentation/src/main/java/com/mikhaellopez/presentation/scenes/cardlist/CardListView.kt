@@ -13,5 +13,4 @@ interface CardListView : BaseUiStateView {
     fun intentErrorRetry(): Flow<Unit>
 
     fun intentCheck(): Flow<Card>
-
 }

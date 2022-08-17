@@ -38,7 +38,7 @@ fun Error(
                 Icon(
                     imageVector = Icons.Default.ErrorOutline,
                     contentDescription = "Cloud error",
-                    //tint = colorResource(R.color.icons),
+                    // tint = colorResource(R.color.icons),
                     modifier = Modifier
                         .size(100.dp)
                         .padding(all = 8.dp)

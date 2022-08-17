@@ -52,5 +52,4 @@ class RefreshCardListTest {
             assert(cause is NoConnectedException)
         }.collect()
     }
-
 }

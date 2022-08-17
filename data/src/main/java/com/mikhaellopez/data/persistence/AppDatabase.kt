@@ -9,5 +9,4 @@ import com.mikhaellopez.data.persistence.entity.CardEntity
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun cardDao(): CardDao
-
 }

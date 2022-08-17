@@ -19,5 +19,4 @@ class CheckCard(
 
     override suspend fun build(param: Card): Flow<Unit> =
         cardRepository.checkCard(param)
-
 }

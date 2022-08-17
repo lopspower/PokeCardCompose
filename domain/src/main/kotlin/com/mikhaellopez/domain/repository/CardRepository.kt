@@ -24,5 +24,4 @@ interface CardRepository {
 
     suspend fun checkCard(card: Card): Flow<Unit>
     //endregion
-
 }

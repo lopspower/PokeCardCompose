@@ -41,5 +41,4 @@ class CardDetailViewModel(
         getCacheCard.execute(param)
             .asRetry(previousErrorMessage)
     //endregion
-
 }

@@ -62,5 +62,4 @@ class CardDataRepository(
     override suspend fun checkCard(card: Card): Flow<Unit> =
         cardProcessor.updateIsCheck(card.name, !card.isCheck)
     //endregion
-
 }

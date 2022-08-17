@@ -84,5 +84,4 @@ class CardDetailRobot(
         composeTestRule.onNodeWithText(item.illustrator).assertIsDisplayed()
     }
     //endregion
-
 }

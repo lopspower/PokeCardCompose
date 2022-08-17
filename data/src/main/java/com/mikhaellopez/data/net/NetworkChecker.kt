@@ -37,5 +37,4 @@ class NetworkChecker(private val context: Context) {
                 } ?: false
             }
         } ?: false
-
 }

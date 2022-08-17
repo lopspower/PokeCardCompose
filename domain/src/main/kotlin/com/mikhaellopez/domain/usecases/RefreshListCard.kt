@@ -33,5 +33,4 @@ class RefreshListCard(
             }
             .flatMapConcat { cardRepository.getCacheListCard() }
             .flatMapConcat { cardRepository.sortListCard(it) }
-
 }

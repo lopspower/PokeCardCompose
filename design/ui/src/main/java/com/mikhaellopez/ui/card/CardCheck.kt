@@ -45,7 +45,8 @@ fun CardCheck(
         ) {
             IconButton(
                 modifier = Modifier.fillMaxSize(),
-                onClick = { onCheck?.invoke() }) {
+                onClick = { onCheck?.invoke() }
+            ) {
                 Icon(
                     imageVector = if (isChecked) Icons.Outlined.CheckBox else Icons.Outlined.CheckBoxOutlineBlank,
                     modifier = Modifier

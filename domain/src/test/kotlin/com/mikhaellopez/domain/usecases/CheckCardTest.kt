@@ -48,5 +48,4 @@ class CheckCardTest {
             assert(cause is PersistenceException)
         }.collect()
     }
-
 }

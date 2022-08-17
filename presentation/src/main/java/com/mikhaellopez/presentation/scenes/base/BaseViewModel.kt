@@ -63,7 +63,9 @@ abstract class BaseViewModel<in View : BaseUiStateView>(
     }
 
     //region Extensions
-    protected inline fun <reified T : Any> Flow<UiState?>.filterData(klass: Class<T> = T::class.java): Flow<T> =
+    protected inline fun <reified T : Any> Flow<UiState?>.filterData(
+        klass: Class<T> = T::class.java
+    ): Flow<T> =
         filter { it != null && it is UiState.Content<*> && !it.isRefresh }
             .map { it as UiState.Content<*> }
             .filter { it.data?.let { data -> klass.isAssignableFrom(data.javaClass) } ?: false }
@@ -89,5 +91,4 @@ abstract class BaseViewModel<in View : BaseUiStateView>(
             .onStartEmit { UiState.Error.createRetry(previousErrorMessage) }
             .catchDelay { onError(it) }
     //endregion
-
 }

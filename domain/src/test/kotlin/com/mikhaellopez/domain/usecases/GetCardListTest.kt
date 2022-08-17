@@ -89,5 +89,4 @@ class GetCardListTest {
             assert(cause is PersistenceException)
         }.collect()
     }
-
 }

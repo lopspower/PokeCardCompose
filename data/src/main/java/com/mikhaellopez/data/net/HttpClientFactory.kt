@@ -22,11 +22,13 @@ open class HttpClientFactory {
 
     open fun createHttpClient(context: Context): HttpClient = HttpClient(OkHttp) {
         install(ContentNegotiation) {
-            json(Json {
-                prettyPrint = BuildConfig.DEBUG
-                isLenient = true
-                ignoreUnknownKeys = true
-            })
+            json(
+                Json {
+                    prettyPrint = BuildConfig.DEBUG
+                    isLenient = true
+                    ignoreUnknownKeys = true
+                }
+            )
         }
 
         install(DefaultRequest) {
@@ -56,5 +58,4 @@ open class HttpClientFactory {
             }
         }
     }
-
 }

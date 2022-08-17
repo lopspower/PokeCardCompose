@@ -63,4 +63,3 @@ private fun createView(cardName: String) = object : CardDetailView {
     override fun intentErrorRetry(): Flow<String> =
         retryIntent.map { cardName }
 }
-

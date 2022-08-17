@@ -20,5 +20,4 @@ class CardProcessor(private val dao: CardDao) : BaseProcessor<CardEntity>(dao) {
     suspend fun updateIsCheck(name: String, isCheck: Boolean): Flow<Unit> =
         flow { emit(dao.updateIsCheck(name, isCheck) == 1) }
             .checkPersistenceResult()
-
 }

@@ -165,7 +165,7 @@ fun DesignSystem(
 
                     //region FAB
                     Row {
-                        FloatingActionButton(onClick = {/* ... */ }) {
+                        FloatingActionButton(onClick = { /* ... */ }) {
                             Text("FAB")
                         }
 
@@ -364,7 +364,9 @@ fun DesignSystem(
                             if (snackbarData.actionLabel != null) {
                                 @Composable {
                                     TextButton(
-                                        colors = ButtonDefaults.textButtonColors(contentColor = SnackbarDefaults.primaryActionColor),
+                                        colors = ButtonDefaults.textButtonColors(
+                                            contentColor = SnackbarDefaults.primaryActionColor
+                                        ),
                                         onClick = { snackbarData.performAction() },
                                         content = { Text(snackbarData.actionLabel!!) }
                                     )

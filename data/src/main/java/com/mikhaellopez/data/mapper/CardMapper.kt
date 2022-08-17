@@ -104,5 +104,4 @@ class CardMapper {
     fun transformToEntity(modelCollection: Collection<Card>): List<CardEntity> =
         modelCollection.map { transformToEntity(it) }
     //endregion
-
 }
