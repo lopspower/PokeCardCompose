@@ -11,7 +11,7 @@ ext {
     androidVersionName          = '1.1.0'
 
     // ANDROID VERSION
-    androidCompileSdkVersion    = 32
+    androidCompileSdkVersion    = 33
     androidMinSdkVersion        = 21
     androidTargetSdkVersion     = androidCompileSdkVersion
 
