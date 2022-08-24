@@ -1,7 +1,6 @@
 package com.mikhaellopez.designsystem
 
 import android.content.res.Configuration
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -21,16 +20,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mikhaellopez.ui.base.MenuIcon
-import com.mikhaellopez.ui.base.Toolbar
-import com.mikhaellopez.ui.base.showAsBottomSheet
+import com.mikhaellopez.ui.base.*
 import com.mikhaellopez.ui.theme.BaseTheme
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun DesignSystem(
-    viewGroupParent: ViewGroup? = null
-) {
+fun DesignSystem() {
     Scaffold(
         topBar = {
             Toolbar(
@@ -54,9 +50,15 @@ fun DesignSystem(
                 color = MaterialTheme.colors.background,
                 modifier = Modifier.padding(paddingValues)
             ) {
-                //region INIT SNACKBAR
+                //region INIT SNACKBAR & BOTTOM SHEET
                 val scope = rememberCoroutineScope()
                 val snackbarHostState = remember { SnackbarHostState() }
+                val modalBottomSheetState = rememberModalBottomSheetState(
+                    ModalBottomSheetValue.Hidden,
+                    confirmStateChange = {
+                        it != ModalBottomSheetValue.HalfExpanded
+                    }
+                )
                 //endregion
 
                 Column(
@@ -178,7 +180,7 @@ fun DesignSystem(
                     Spacer(modifier = Modifier.size(16.dp))
                     //endregion
 
-                    //region SNACKBAR
+                    //region BUTTON SNACKBAR
                     Button(
                         onClick = {
                             scope.launch {
@@ -195,19 +197,14 @@ fun DesignSystem(
                     }
                     //endregion
 
-                    //region BOTTOM SHEET
+                    //region BUTTON BOTTOM SHEET
                     Button(
                         onClick = {
-                            viewGroupParent?.showAsBottomSheet {
-                                Surface(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(200.dp)
-                                ) {
-                                    Text(
-                                        text = "Bottom Sheet Content",
-                                        textAlign = TextAlign.Center
-                                    )
+                            scope.launch {
+                                if (modalBottomSheetState.isVisible) {
+                                    modalBottomSheetState.hide()
+                                } else {
+                                    modalBottomSheetState.show()
                                 }
                             }
                         },
@@ -380,6 +377,30 @@ fun DesignSystem(
                             action = actionComposable
                         )
                     }
+                }
+                //endregion
+
+                //region BOTTOM SHEET
+                Box(modifier = Modifier.fillMaxSize()) {
+                    ModalBottomSheetLayout(
+                        sheetBackgroundColor = Color.Transparent,
+                        sheetState = modalBottomSheetState,
+                        sheetContent = {
+                            BottomSheet {
+                                Surface(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(200.dp)
+                                ) {
+                                    Text(
+                                        text = "Bottom Sheet Content",
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+                            }
+                        },
+                        content = {}
+                    )
                 }
                 //endregion
             }
