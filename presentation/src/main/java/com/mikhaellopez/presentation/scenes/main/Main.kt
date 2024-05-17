@@ -24,10 +24,10 @@ fun MainScene() {
         composable(
             route = NavScreen.CardDetail.route,
             arguments = listOf(
-                navArgument(NavScreen.CardDetail.argName) { nullable = true }
+                navArgument(NavScreen.CardDetail.ARG_NAME) { nullable = true }
             )
         ) { backStackEntry ->
-            val cardName = backStackEntry.arguments?.getString(NavScreen.CardDetail.argName)
+            val cardName = backStackEntry.arguments?.getString(NavScreen.CardDetail.ARG_NAME)
                 ?: return@composable
             val context = LocalContext.current
             CardDetailScreen(
@@ -41,12 +41,12 @@ fun MainScene() {
 
 sealed class NavScreen(val route: String) {
 
-    object Home : NavScreen("Home")
+    data object Home : NavScreen("Home")
 
-    object CardDetail : NavScreen("CardDetail/{name}") {
-        const val argName: String = "name"
+    data object CardDetail : NavScreen("CardDetail/{name}") {
+        const val ARG_NAME: String = "name"
 
         fun createRoute(cardName: String): String = route
-            .replace("{$argName}", cardName)
+            .replace("{$ARG_NAME}", cardName)
     }
 }

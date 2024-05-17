@@ -9,7 +9,6 @@ import com.mikhaellopez.data.persistence.processor.CardProcessor
 import com.mikhaellopez.domain.model.Card
 import com.mikhaellopez.domain.model.RarityEnum
 import com.mikhaellopez.domain.model.TypeEnum
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -22,7 +21,6 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
 class CardDataRepositoryTest {
 

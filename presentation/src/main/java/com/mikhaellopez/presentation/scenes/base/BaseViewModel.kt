@@ -13,9 +13,14 @@ import com.mikhaellopez.presentation.exception.ErrorMessageFactory
 import com.mikhaellopez.ui.state.UiState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.test.TestCoroutineScheduler
 import kotlin.coroutines.CoroutineContext
 
@@ -24,13 +29,12 @@ import kotlin.coroutines.CoroutineContext
  * Licensed under the Apache License Version 2.0
  * Abstract class representing a ViewModel in a MVI pattern.
  */
-@OptIn(ExperimentalCoroutinesApi::class)
 abstract class BaseViewModel<in View : BaseUiStateView>(
     private val context: CoroutineContext,
     private val errorMessageFactory: ErrorMessageFactory
 ) : ViewModel() {
 
-    lateinit var scope: CoroutineScope
+    private lateinit var scope: CoroutineScope
 
     @set:VisibleForTesting
     var testMode = TestModeEnum.NONE
@@ -43,9 +47,9 @@ abstract class BaseViewModel<in View : BaseUiStateView>(
     protected fun subscribeUiState(view: View, vararg flows: Flow<UiState>) {
         flows.forEach { flow ->
             flow.flowOn(context)
-                .onEach { viewModel ->
-                    Log.d("Render", viewModel.toString())
-                    view.uiStateFlow.value = viewModel
+                .onEach { state ->
+                    Log.d("Render", state.toString())
+                    view.uiStateFlow.value = state
                 }
                 .launchIn(scope)
         }

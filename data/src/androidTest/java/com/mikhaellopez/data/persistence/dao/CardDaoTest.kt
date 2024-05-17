@@ -5,14 +5,12 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.mikhaellopez.data.persistence.AppDatabase
 import com.mikhaellopez.data.persistence.DatabaseFactoryTest
 import com.mikhaellopez.data.persistence.entity.CardEntity
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(AndroidJUnit4::class)
 open class CardDaoTest {
 

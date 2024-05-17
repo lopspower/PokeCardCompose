@@ -2,9 +2,19 @@ package com.mikhaellopez.domain.extensions
 
 import com.mikhaellopez.domain.exception.PersistenceException
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.zip
 import kotlin.coroutines.CoroutineContext
 
 fun Flow<Boolean>.checkPersistenceResult(): Flow<Unit> =
@@ -16,7 +26,7 @@ fun Flow<Boolean>.checkPersistenceResult(): Flow<Unit> =
 fun <T> Flow<T?>.defaultIfEmpty(default: T): Flow<T> =
     map { value -> value ?: default }
 
-@OptIn(FlowPreview::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 fun <T> Flow<T?>.switchIfEmpty(flow: Flow<T>): Flow<T> =
     flatMapConcat { value ->
         if (value == null) flow

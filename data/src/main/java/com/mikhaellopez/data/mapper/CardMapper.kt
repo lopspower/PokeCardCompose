@@ -29,7 +29,7 @@ class CardMapper {
             TypeEnum.toTypeEnum(dto.type),
             RarityEnum.toRarityEnum(dto.rarity),
             dto.pokemonNumber,
-            "https://lopspower.github.io/poke/${dto.picture}",
+            "https://mikhaellopez.com/github/${dto.picture}",
             dto.illustrator,
             "https://bulbapedia.bulbagarden.net/wiki/${dto.wikiLink}",
             dto.number,

@@ -6,7 +6,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion androidCompileSdkVersion
+    compileSdk androidCompileSdkVersion
+    namespace "com.mikhaellopez.designsystem"
     defaultConfig {
         applicationId "com.mikhaellopez.pokecardcompose.designsystem"
         minSdk androidMinSdkVersion
@@ -27,11 +28,15 @@ android {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    // Dependency Check Strategy
+    tasks.named("dependencyUpdates").configure {
+        rejectVersionIf { isNonStable(it.candidate.version) && !isNonStable(it.currentVersion) }
     }
 }
 
@@ -42,13 +47,10 @@ ktlint {
 
 dependencies {
     // MODULE
-    implementation project(':design:ui')
+    implementation(project(':design:ui'))
 
     // KOTLIN
-    implementation kotlinStdlib
+    implementation(kotlinStdlib)
     // ANDROIDX
-    implementation androidXAppCompat
-
-    // DEPENDENCY CHECK STRATEGY
-    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+    implementation(androidXAppCompat)
 }

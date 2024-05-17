@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion androidCompileSdkVersion
+    compileSdk androidCompileSdkVersion
     namespace 'com.mikhaellopez.presentation'
     defaultConfig {
         applicationId "com.mikhaellopez.pokecardcompose"
@@ -41,22 +41,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
-    applicationVariants.all { variant ->
+    applicationVariants.configureEach { variant ->
         // KSP - To use generated sources
         variant.addJavaSourceFoldersToModel(file("build/generated/ksp/${variant.name}/kotlin"))
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    // Dependency Check Strategy
+    tasks.named("dependencyUpdates").configure {
+        rejectVersionIf { isNonStable(it.candidate.version) && !isNonStable(it.currentVersion) }
     }
 }
 
@@ -67,36 +72,33 @@ ktlint {
 
 dependencies {
     // MODULE
-    implementation project(':data')
-    implementation project(':domain')
-    implementation project(':design:ui')
+    implementation(project(':data'))
+    implementation(project(':domain'))
+    implementation(project(':design:ui'))
 
     // KOTLIN
-    implementation kotlinStdlib
+    implementation(kotlinStdlib)
     // ANDROIDX
-    implementation androidXAppCompat
-    implementation androidXPreference
-    implementation multidex
+    implementation(androidXAppCompat)
+    implementation(androidXPreference)
+    implementation(multidex)
     // KOIN
-    implementation koinCore
-    implementation koinAndroid
-    implementation koinAnnotations
-    implementation koinCompose
+    implementation(koinCore)
+    implementation(koinAndroid)
+    implementation(koinAnnotations)
+    implementation(koinCompose)
     ksp koinCompiler
     // NAVIGATION
-    implementation navigationCompose
+    implementation(navigationCompose)
 
     // TEST
-    testImplementation junit
-    testImplementation mockitoInline
-    testImplementation mockitoKotlin
-    implementation kotlinxCoroutinesTest
+    testImplementation(junit)
+    testImplementation(mockitoInline)
+    testImplementation(mockitoKotlin)
+    implementation(kotlinxCoroutinesTest)
 
     // ANDROID TEST
-    androidTestImplementation androidXTestJunit
-    androidTestImplementation composeUiTestJunit
-    debugImplementation composeUiTestManifest
-
-    // DEPENDENCY CHECK STRATEGY
-    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+    androidTestImplementation(androidXTestJunit)
+    androidTestImplementation(composeUiTestJunit)
+    debugImplementation(composeUiTestManifest)
 }

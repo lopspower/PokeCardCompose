@@ -8,7 +8,6 @@ import com.mikhaellopez.presentation.exception.ErrorMessageFactoryTest
 import com.mikhaellopez.presentation.scenes.base.BaseViewModelTest
 import com.mikhaellopez.presentation.scenes.base.PublishSharedFlow
 import com.mikhaellopez.ui.state.UiState
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
@@ -22,7 +21,6 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class CardDetailViewModelTest : BaseViewModelTest() {
 
     // View
@@ -64,7 +62,7 @@ class CardDetailViewModelTest : BaseViewModelTest() {
 
         // Attach
         viewModel.attach(view)
-        await()
+        await() // advanceTimeBy
 
         assertEquals(2, results.size)
         assertEquals(UiState.Loading(), results.first())

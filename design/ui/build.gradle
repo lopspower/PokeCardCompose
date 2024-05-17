@@ -25,11 +25,15 @@ android {
         kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    // Dependency Check Strategy
+    tasks.named("dependencyUpdates").configure {
+        rejectVersionIf { isNonStable(it.candidate.version) && !isNonStable(it.currentVersion) }
     }
 }
 
@@ -40,28 +44,25 @@ ktlint {
 
 dependencies {
     // MODULE
-    implementation project(':domain')
+    implementation(project(':domain'))
 
     // KOTLIN
-    implementation kotlinStdlib
+    implementation(kotlinStdlib)
     // ANDROIDX
-    implementation androidXAppCompat
+    implementation(androidXAppCompat)
     // COMPOSE
-    api composeCompiler
-    api composeUI
-    debugApi composeUiTooling
-    debugApi customviewPoolingContainer
-    api composeUiToolingPreview
-    api composeFoundation
-    api composeMaterial
-    api composeMaterialIconsExt
-    api activityCompose
-    implementation accompanistSwiperefresh
-    implementation coilCompose
+    api(platform(composeBom))
+    api(composeUI)
+    debugApi(composeUiTooling)
+    debugApi(customviewPoolingContainer)
+    api(composeUiToolingPreview)
+    api(composeFoundation)
+    api(composeMaterial)
+    api(composeMaterialIconsExt)
+    api(activityCompose)
+    implementation(accompanistSwiperefresh)
+    implementation(coilCompose)
     // NAVIGATION
-    api navigationFragment
-    api navigationUi
-
-    // DEPENDENCY CHECK STRATEGY
-    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+    api(navigationFragment)
+    api(navigationUi)
 }

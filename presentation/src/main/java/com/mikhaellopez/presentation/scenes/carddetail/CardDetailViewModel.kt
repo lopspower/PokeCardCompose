@@ -6,13 +6,12 @@ import com.mikhaellopez.presentation.exception.ErrorMessageFactory
 import com.mikhaellopez.presentation.scenes.base.BaseViewModel
 import com.mikhaellopez.ui.state.UiState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlin.coroutines.CoroutineContext
 
-@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 class CardDetailViewModel(
     private val getCacheCard: GetCacheCard,
     private val context: CoroutineContext,

@@ -5,7 +5,10 @@ import com.mikhaellopez.data.persistence.entity.CardEntity
 import com.mikhaellopez.domain.model.Card
 import com.mikhaellopez.domain.model.RarityEnum
 import com.mikhaellopez.domain.model.TypeEnum
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -73,7 +76,7 @@ class CardMapperTest {
         assertEquals(dto.type, type.name)
         assertEquals(dto.rarity, rarity.name)
         assertEquals(dto.pokemonNumber, pokemonNumber)
-        assertEquals("https://lopspower.github.io/poke/${dto.picture}", picture)
+        assertEquals("https://mikhaellopez.com/github/${dto.picture}", picture)
         assertEquals(dto.illustrator, illustrator)
         assertEquals("https://bulbapedia.bulbagarden.net/wiki/${dto.wikiLink}", wikiLink)
         assertEquals(dto.number, number)

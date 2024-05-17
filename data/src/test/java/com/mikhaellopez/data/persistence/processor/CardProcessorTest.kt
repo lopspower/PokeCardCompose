@@ -3,7 +3,6 @@ package com.mikhaellopez.data.persistence.processor
 import com.mikhaellopez.data.persistence.dao.CardDao
 import com.mikhaellopez.data.persistence.entity.CardEntity
 import com.mikhaellopez.domain.exception.PersistenceException
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.count
@@ -17,7 +16,6 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
 class CardProcessorTest {
 

@@ -17,21 +17,23 @@ ktlint {
     android = true
 }
 
+// Dependency Check Strategy
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf { isNonStable(it.candidate.version) && !isNonStable(it.currentVersion) }
+}
+
 dependencies {
     // KOTLIN
-    implementation kotlinStdlib
-    implementation kotlinxCoroutinesCore
+    implementation(kotlinStdlib)
+    implementation(kotlinxCoroutinesCore)
     // KOIN
-    implementation koinCore
-    implementation koinAnnotations
-    ksp koinCompiler
+    implementation(koinCore)
+    implementation(koinAnnotations)
+    ksp(koinCompiler)
 
     // TEST
-    testImplementation junit
-    testImplementation mockitoInline
-    testImplementation mockitoKotlin
-    testImplementation kotlinxCoroutinesTest
-
-    // DEPENDENCY CHECK STRATEGY
-    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+    testImplementation(junit)
+    testImplementation(mockitoInline)
+    testImplementation(mockitoKotlin)
+    testImplementation(kotlinxCoroutinesTest)
 }

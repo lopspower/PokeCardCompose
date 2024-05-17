@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion androidCompileSdkVersion
+    compileSdk androidCompileSdkVersion
     namespace 'com.mikhaellopez.data'
     defaultConfig {
         minSdk androidMinSdkVersion
@@ -22,16 +22,23 @@ android {
             minifyEnabled true
         }
     }
-    libraryVariants.all { variant ->
+    libraryVariants.configureEach { variant ->
         // KSP - To use generated sources
         variant.addJavaSourceFoldersToModel(file("build/generated/ksp/${variant.name}/kotlin"))
     }
+    buildFeatures {
+        buildConfig = true
+    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    // Dependency Check Strategy
+    tasks.named("dependencyUpdates").configure {
+        rejectVersionIf { isNonStable(it.candidate.version) && !isNonStable(it.currentVersion) }
     }
 }
 
@@ -42,42 +49,39 @@ ktlint {
 
 dependencies {
     // MODULE
-    implementation project(':domain')
+    implementation(project(':domain'))
 
     // KOTLIN
-    implementation kotlinStdlib
+    implementation(kotlinStdlib)
     // SUPPORT
-    api androidXCore
+    api(androidXCore)
     // COMPONENTS
-    implementation room
-    ksp roomCompiler
+    implementation(room)
+    ksp(roomCompiler)
     // KOIN
-    implementation koinCore
-    implementation koinAndroid
-    implementation koinAnnotations
+    implementation(koinCore)
+    implementation(koinAndroid)
+    implementation(koinAnnotations)
     ksp(koinCompiler)
     // WEBSERVICES
-    implementation ktorClientCore
-    implementation ktorClientOkHttp
-    implementation ktorSerializationJson
-    implementation ktorContentNegotiation
+    implementation(ktorClientCore)
+    implementation(ktorClientOkHttp)
+    implementation(ktorSerializationJson)
+    implementation(ktorContentNegotiation)
 
     // DEBUG TOOLS
-    implementation ktorClientLogging
-    debugApi chuckerDebug
-    releaseApi chuckerRelease
+    implementation(ktorClientLogging)
+    debugApi(chuckerDebug)
+    releaseApi(chuckerRelease)
 
     // TEST
-    testImplementation junit
-    testImplementation mockitoInline
-    testImplementation mockitoKotlin
-    testImplementation kotlinxCoroutinesTest
+    testImplementation(junit)
+    testImplementation(mockitoInline)
+    testImplementation(mockitoKotlin)
+    testImplementation(kotlinxCoroutinesTest)
 
     // ANDROID TEST
-    androidTestImplementation androidXTestRunner
-    androidTestImplementation androidXTestJunit
-    androidTestImplementation kotlinxCoroutinesTest
-
-    // DEPENDENCY CHECK STRATEGY
-    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
+    androidTestImplementation(androidXTestRunner)
+    androidTestImplementation(androidXTestJunit)
+    androidTestImplementation(kotlinxCoroutinesTest)
 }

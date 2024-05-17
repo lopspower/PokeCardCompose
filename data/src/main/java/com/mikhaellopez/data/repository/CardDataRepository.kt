@@ -7,13 +7,17 @@ import com.mikhaellopez.data.persistence.processor.CardProcessor
 import com.mikhaellopez.domain.extensions.defaultIfEmpty
 import com.mikhaellopez.domain.model.Card
 import com.mikhaellopez.domain.repository.CardRepository
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 
 /**
  * [CardRepository] for retrieving card data.
  */
-@OptIn(FlowPreview::class)
 class CardDataRepository(
     private val pokeApi: PokeApi,
     private val cardMapper: CardMapper,
@@ -48,6 +52,7 @@ class CardDataRepository(
                     ?: throw IllegalStateException("CardEntity not found")
             }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun saveCard(card: Card): Flow<Unit> =
         cardProcessor.get(card.name)
             .defaultIfEmpty(cardMapper.transformToEntity(card))

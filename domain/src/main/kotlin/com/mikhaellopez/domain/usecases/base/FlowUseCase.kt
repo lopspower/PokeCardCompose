@@ -8,8 +8,7 @@ import kotlinx.coroutines.flow.onEach
  * Copyright (C) 2022 Mikhael LOPEZ
  * Licensed under the Apache License Version 2.0
  */
-abstract class FlowUseCase<P, R : Any>
-constructor(
+abstract class FlowUseCase<P, R : Any>(
     private val logger: Logger?
 ) : UseCase<P, Flow<R>>(logger) {
 

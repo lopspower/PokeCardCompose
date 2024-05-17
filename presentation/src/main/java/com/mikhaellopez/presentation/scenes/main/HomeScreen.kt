@@ -3,10 +3,14 @@ package com.mikhaellopez.presentation.scenes.main
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.CalendarViewMonth
-import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -100,8 +104,8 @@ sealed class BottomNavScreen(
     @StringRes val resourceId: Int,
     val imageVector: ImageVector
 ) {
-    object CardGrid :
+    data object CardGrid :
         BottomNavScreen("CardGrid", R.string.card_grid, Icons.Default.CalendarViewMonth)
 
-    object CardList : BottomNavScreen("CardList", R.string.card_list, Icons.Default.List)
+    data object CardList : BottomNavScreen("CardList", R.string.card_list, Icons.AutoMirrored.Filled.List)
 }
