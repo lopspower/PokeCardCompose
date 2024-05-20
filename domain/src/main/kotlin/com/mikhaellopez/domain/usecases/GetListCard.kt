@@ -35,8 +35,11 @@ class GetListCard(
 
         return cardRepository.isConnected()
             .flatMapConcat { isConnected ->
-                if (isConnected) net
-                else cache
+                if (isConnected) {
+                    net
+                } else {
+                    cache
+                }
             }
     }
 }

@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 // Intents
 private val retryIntent = PublishSharedFlow.create<Unit>()
@@ -28,7 +28,7 @@ fun CardDetailScreen(
     openLink: ((String) -> Unit)? = null
 ) {
     val view = remember { createView(cardName) }
-    val viewModel = getViewModel<CardDetailViewModel>()
+    val viewModel = koinViewModel<CardDetailViewModel>()
     LaunchedEffect(cardName) { viewModel.attach(view) }
 
     RenderUiState(

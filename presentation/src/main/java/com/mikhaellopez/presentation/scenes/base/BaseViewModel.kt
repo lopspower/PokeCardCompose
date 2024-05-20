@@ -40,8 +40,11 @@ abstract class BaseViewModel<in View : BaseUiStateView>(
     var testMode = TestModeEnum.NONE
 
     open fun attach(view: View) {
-        scope = if (!testMode.isTest()) CoroutineScope(Dispatchers.Main)
-        else CoroutineScope(TestCoroutineScheduler())
+        scope = if (!testMode.isTest()) {
+            CoroutineScope(Dispatchers.Main)
+        } else {
+            CoroutineScope(TestCoroutineScheduler())
+        }
     }
 
     protected fun subscribeUiState(view: View, vararg flows: Flow<UiState>) {

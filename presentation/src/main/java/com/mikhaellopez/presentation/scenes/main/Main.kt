@@ -14,7 +14,7 @@ fun MainScene() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = NavScreen.Home.route,
+        startDestination = NavScreen.Home.route
     ) {
         composable(route = NavScreen.Home.route) {
             HomeScreen(openCard = { card ->

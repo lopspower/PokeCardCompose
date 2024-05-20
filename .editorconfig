@@ -3,3 +3,4 @@ root = true
 max_line_length = 120
 insert_final_newline = true
 disabled_rules = import-ordering, no-wildcard-imports
+ktlint_disabled_rules = max-line-length, no-wildcard-imports, import-ordering, indent

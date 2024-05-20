@@ -16,7 +16,11 @@ inline fun <reified T> UiState.toContent(
 ): T? =
     if (this is UiState.Content<*> &&
         data?.let { data -> klass.isAssignableFrom(data.javaClass) } == true
-    ) data as T else null
+    ) {
+        data as T
+    } else {
+        null
+    }
 
 fun MutableStateFlow<UiState>.clearSnackMessage() {
     (this.value as? UiState.Content<*>)?.also {

@@ -25,8 +25,11 @@ class RefreshListCard(
     override suspend fun build(param: Unit): Flow<List<Card>> =
         cardRepository.isConnected()
             .map { isConnected ->
-                if (!isConnected) throw NoConnectedException
-                else true
+                if (!isConnected) {
+                    throw NoConnectedException
+                } else {
+                    true
+                }
             }.flatMapConcat {
                 cardRepository.getListCard()
                     .flatMapConcat { cardRepository.saveListCard(it) }

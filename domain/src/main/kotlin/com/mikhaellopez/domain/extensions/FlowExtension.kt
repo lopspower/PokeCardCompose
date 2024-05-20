@@ -19,8 +19,11 @@ import kotlin.coroutines.CoroutineContext
 
 fun Flow<Boolean>.checkPersistenceResult(): Flow<Unit> =
     map { result ->
-        if (result) Unit
-        else throw PersistenceException
+        if (result) {
+            Unit
+        } else {
+            throw PersistenceException
+        }
     }
 
 fun <T> Flow<T?>.defaultIfEmpty(default: T): Flow<T> =
@@ -29,8 +32,11 @@ fun <T> Flow<T?>.defaultIfEmpty(default: T): Flow<T> =
 @OptIn(ExperimentalCoroutinesApi::class)
 fun <T> Flow<T?>.switchIfEmpty(flow: Flow<T>): Flow<T> =
     flatMapConcat { value ->
-        if (value == null) flow
-        else flowOf(value)
+        if (value == null) {
+            flow
+        } else {
+            flowOf(value)
+        }
     }
 
 fun <T> Flow<T?>.throwIfEmpty(throwable: Throwable): Flow<T> =

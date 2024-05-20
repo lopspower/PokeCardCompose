@@ -7,7 +7,9 @@ import com.mikhaellopez.data.persistence.entity.CardEntity.Companion.CARD_TABLE
 
 @Entity(tableName = CARD_TABLE)
 class CardEntity(
-    @PrimaryKey @ColumnInfo(name = CARD_NAME) val name: String,
+    @PrimaryKey
+    @ColumnInfo(name = CARD_NAME)
+    val name: String,
     @ColumnInfo(name = CARD_FRENCH_NAME) val frenchName: String?,
     @ColumnInfo(name = CARD_JAPANESE_NAME) val japaneseName: String?,
     @ColumnInfo(name = CARD_TYPE) val type: String,

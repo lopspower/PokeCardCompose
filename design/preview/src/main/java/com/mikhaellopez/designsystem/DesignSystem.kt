@@ -73,7 +73,7 @@ fun DesignSystem() {
                 menuActions = {
                     MenuIcon(
                         imageVector = Icons.Default.AutoFixNormal,
-                        contentDescription = "Switch Dark/Light Mode",
+                        contentDescription = "Switch Dark/Light Mode"
                     ) {
                         if (AppCompatDelegate.MODE_NIGHT_YES == AppCompatDelegate.getDefaultNightMode()) {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -105,7 +105,7 @@ fun DesignSystem() {
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState())
                         .padding(all = 20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     //region COLORS
                     Row {
@@ -277,7 +277,7 @@ fun DesignSystem() {
                         value = text1,
                         label = { Text(text = "Text Field") },
                         onValueChange = { newText -> text1 = newText },
-                        placeholder = { Text(text = "Placeholder") },
+                        placeholder = { Text(text = "Placeholder") }
                     )
                     Spacer(modifier = Modifier.size(12.dp))
 
@@ -287,7 +287,7 @@ fun DesignSystem() {
                         label = { Text(text = "Text Field With Error") },
                         isError = true,
                         onValueChange = { newText -> text2 = newText },
-                        placeholder = { Text(text = "Placeholder") },
+                        placeholder = { Text(text = "Placeholder") }
                     )
                     Spacer(modifier = Modifier.size(12.dp))
 

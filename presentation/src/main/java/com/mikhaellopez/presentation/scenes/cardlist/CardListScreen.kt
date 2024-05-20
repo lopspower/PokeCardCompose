@@ -15,7 +15,7 @@ import com.mikhaellopez.ui.state.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 // Intents
 private val refreshIntent = PublishSharedFlow.create<Unit>()
@@ -28,7 +28,7 @@ fun CardListScreen(
     openCard: (Card) -> Unit
 ) {
     val view = remember { createView() }
-    val viewModel = getViewModel<CardListViewModel>()
+    val viewModel = koinViewModel<CardListViewModel>()
     LaunchedEffect(if (gridMode) "CardGridScreen" else "CardListScreen") { viewModel.attach(view) }
 
     RenderUiState(
